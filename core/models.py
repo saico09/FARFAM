@@ -33,3 +33,9 @@ class retiroMedicamento(models.Model):
 
 class CarnetInscFamil(models.Model):
     sector = models.CharField(max)
+    
+class Usuario(models.Model):
+    idUsuario = models.CharField(max_length=3, verbose_name="IdUsuario", null=True, primary_key=True)
+    nombreUsuario = models.CharField(max_length= 20, verbose_name="nombreUsuario", null=True)
+    correoUsuario = models.CharField(max_length=30, verbose_name="correoUsuario", null=True)
+    contrasenaUsuario = models.CharField(max_length=16, verbose_name="contrasenaUsuario", null=True)
