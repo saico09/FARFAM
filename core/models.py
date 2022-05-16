@@ -63,10 +63,10 @@ class medicamento(models.Model):
     descripcion = models.CharField(max_length=100, verbose_name="descMed", null=True)
     FechaElabora = models.DateField()
     FechaCaduc = models.DateField()
-    stock = models.IntegerField(max_length=4, verbose_name="descMed", null=True)
+    stock = models.IntegerField(verbose_name="descMed", null=True)
     fabrica = models.CharField(max_length=50, verbose_name="nomMedicamento", null=True)
     contenido = models.CharField(max_length=100, verbose_name="Content", null=True)
-    gramos = models.IntegerField(max_length=4, verbose_name="Gram", null=True)
+    gramos = models.IntegerField(verbose_name="Gram", null=True)
     caducado = models.BinaryField(null=False)
     motivoCaduc = models.CharField(max_length=100, verbose_name="MotCaduc", null=False)
 
@@ -77,7 +77,7 @@ class medicamento(models.Model):
 class reservar(models.Model):
     medicam = models.ForeignKey(medicamento, on_delete=models.CASCADE)
     dosis = models.CharField(max_length=50, verbose_name="DosisMedic", null=True)
-    NumReservas = models.IntegerField(max_length=4, verbose_name="NumReserv", null=True) #cantidad de reservas
+    NumReservas = models.IntegerField(verbose_name="NumReserv", null=True) #cantidad de reservas
     Medico = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     def __str__(self) -> str:
         return self.NumReservas
