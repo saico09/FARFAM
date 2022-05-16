@@ -67,7 +67,7 @@ class medicamento(models.Model):
     fabrica = models.CharField(max_length=50, verbose_name="nomMedicamento", null=True)
     contenido = models.CharField(max_length=100, verbose_name="Content", null=True)
     gramos = models.IntegerField(verbose_name="Gram", null=True)
-    caducado = models.BinaryField(null=False)
+    caducado = models.IntegerField(verbose_name="Caduc",null=True)
     motivoCaduc = models.CharField(max_length=100, verbose_name="MotCaduc", null=False)
 
     def __str__(self):

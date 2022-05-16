@@ -4,6 +4,8 @@ from core.Carrito import Carrito
 
 from core.models import medicamento
 
+from core.forms import MedicamentoForm
+
 def farmacia(request):
     productos=medicamento.objects.all()
     return render (request,"farmacia.html", {'productos':productos})
@@ -34,4 +36,19 @@ def limpiar_producto(request):
 
 
 def agregar(request):
-    return render (request,"agregar.html")
+    datos = {
+
+        'form1' : MedicamentoForm()
+
+    }
+
+    if request.method == 'POST':
+        formulario = MedicamentoForm(request.POST)
+
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje']= 'Datos guardados exitosamente'
+    return render (request,"agregar.html",datos)
+
+
+            

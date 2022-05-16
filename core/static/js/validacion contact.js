@@ -109,15 +109,5 @@ $(document).ready(function () {
 });
 
 function mensaje(){
-    if (
-        !validaNombre() ||
-        !validaEmail() ||
-        !validaMensaje()
-    ) {
-        $('#mensaje1').prop('hidden',false);
-    }
-    else{
-        $('#mensaje').prop('hidden',false);
-    }
-    
+    $('#mensaje').prop('hidden',false);    
 }
