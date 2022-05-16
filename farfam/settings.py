@@ -31,6 +31,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap4',
+    'crispy_forms',
+    'rest_framework', #pip install djangorestframework
+    'rest_framework.authtoken',
+
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'core',
-    'farfam'
+    'farfam',
+    
 ]
 
 MIDDLEWARE = [
@@ -65,6 +72,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processor.total_carrito',
+
             ],
         },
     },
