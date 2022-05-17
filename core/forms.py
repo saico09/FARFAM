@@ -4,7 +4,7 @@ from django import forms
 
 
 class MedicamentoForm(ModelForm):
-
+    FechaElabora=forms.DateField()
     class Meta:
         model=medicamento
         fields=['nombreMedi', 'precio','descripcion', 'FechaElabora', 'FechaCaduc', 'stock', 'fabrica', 'contenido', 'gramos', 'caducado', 'motivoCaduc']

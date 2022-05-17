@@ -50,5 +50,25 @@ def agregar(request):
             datos['mensaje']= 'Datos guardados exitosamente'
     return render (request,"agregar.html",datos)
 
+def medicamentos(request):
+    medicamentos=medicamento.objects.all()
+    datos={ 
+        'medicamento':medicamentos
+    }
+    return render(request,"medicamentos.html",datos)
+
+def eliminar(request,id):
+    publicaciones=medicamento.objects.get(id=id)
+
+    publicaciones.delete()
+
+    return redirect(to="Medicamentos")
+
+def login(request):
+
+
+
+    
+    return render(request,"login.html")
 
             

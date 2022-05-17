@@ -16,10 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from core.views import farmacia,agregar
+from core.views import farmacia,agregar,medicamentos,login,eliminar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', farmacia, name="Farmacia"),
-    path('agregar/', agregar, name="Agregar")
+    path('agregar/', agregar, name="Agregar"),
+    path('medicamentos/',medicamentos, name="Medicamentos"),
+    path('login/',login, name="Login"),
+    path('eliminar/<id>',eliminar,name='eliminar'),
+
 ]

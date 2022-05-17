@@ -41,6 +41,14 @@ class CarnetInscFamil(models.Model):
     def __str__(self) -> str:
         return self.sector
 
+
+
+class TipoUsuario(models.Model):
+    idTipo = models.CharField(max_length=3, verbose_name="IdTipo", null=True, primary_key=True)
+    descripcion = models.CharField(max_length= 20, verbose_name="descrTipoUsu", null=True)
+    def __str__(self) -> str:
+        return self.descripcion
+
 class Usuario(models.Model):
     RutUsuario = models.CharField(max_length=3, verbose_name="IdUsuario", null=True, primary_key=True)
     PnombreUsuario = models.CharField(max_length= 20, verbose_name="PNomUsu", null=True)
@@ -49,22 +57,19 @@ class Usuario(models.Model):
     AMaternoUsuario = models.CharField(max_length= 20, verbose_name="ApMUsu", null=True)
     correoUsuario = models.EmailField(max_length=30, verbose_name="CorreoUsuario", null=True)
     contrasenaUsuario = models.CharField(max_length=16, verbose_name="ContrasenaUsuario", null=True)
+    tipo = models.ForeignKey(TipoUsuario, on_delete=models.CASCADE)
+
     def __str__(self) -> str:
         return self.PnombreUsuario
 
-class TipoUsuario(models.Model):
-    descripcion = models.CharField(max_length= 20, verbose_name="descrTipoUsu", null=True)
-    def __str__(self) -> str:
-        return self.descripcion
-
 class medicamento(models.Model):
     nombreMedi=models.CharField(max_length=50, verbose_name="nomMedicamento", null=True)
-    precio=models.CharField(max_length=6, verbose_name="precioMedic",null=True)
+    precio=models.IntegerField(verbose_name="precioMedic",null=True)
     descripcion = models.CharField(max_length=100, verbose_name="descMed", null=True)
     FechaElabora = models.DateField()
     FechaCaduc = models.DateField()
-    stock = models.IntegerField(verbose_name="descMed", null=True)
-    fabrica = models.CharField(max_length=50, verbose_name="nomMedicamento", null=True)
+    stock = models.IntegerField(verbose_name="stockcMed", null=True)
+    fabrica = models.CharField(max_length=50, verbose_name="fabMedicamento", null=True)
     contenido = models.CharField(max_length=100, verbose_name="Content", null=True)
     gramos = models.IntegerField(verbose_name="Gram", null=True)
     caducado = models.IntegerField(verbose_name="Caduc",null=True)
