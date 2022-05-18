@@ -64,6 +64,21 @@ def eliminar(request,id):
 
     return redirect(to="Medicamentos")
 
+def modificar(request,id):
+    publicaciones=medicamento.objects.get(id=id)
+
+    datos = {
+        'form1': MedicamentoForm(instance=publicaciones)
+    }
+
+    if request.method== 'POST':
+        formulario=MedicamentoForm(data=request.POST,instance=medicamento)
+        if formulario.is_valid:
+            formulario.save()
+            datos['mensaje']="Datos modificados exitosamente"
+
+    return render(request,'modificar.html',datos)
+
 def login(request):
 
 

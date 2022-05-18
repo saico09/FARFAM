@@ -9,7 +9,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Medicamentos</title>
+        <title>Modificar</title>
         {% bootstrap_css %}
         <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
 
@@ -60,20 +60,26 @@
                 </div>
 
             </div>
-            <div class="row" style="background-color: grey;">
-                    <table class="table table-hover" >
-                        {%for me in medicamento%}
-                        <div class="col">
-                            <hr class="my-4">
-                            <h5>{{me.nombreMedi}}</h5>
-                            <p>{{me.precio}}</p>   
-                            <a class="btn btn-danger btn-lg" href="{% url 'eliminar' me.id %}" role="button">Eliminar</a>
-                            <a class="btn btn-danger btn-lg" href="{% url 'modificar' me.id %}"  role="button">Modificar</a>
 
+            <div class="row" style="background-color: grey;">
+                <div class="col" style="background-color: grey;">
+                    <form action="" method="POST" id="formulario" novalidate>
+                        {% csrf_token %}
+                        <div class="form-group"> 
+                            <br>
+                            {{ form1|crispy}}
                         </div>
-                        <br>
-                        {% endfor %}
-                    </table>
+
+                        <hr class="my-4">
+                        <div class="form-group">
+                            <button class="btn btn-danger" type="submit" onclick="mensaje()">Modificar</button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+            <div class="alert alert-danger" role="alert" hidden id="mensaje">
+                Se ha enviado con EXITO
             </div>
 
 

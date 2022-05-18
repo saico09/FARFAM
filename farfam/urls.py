@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from core.views import farmacia,agregar,medicamentos,login,eliminar
+from core.views import farmacia,agregar,medicamentos,login,eliminar,modificar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,7 @@ urlpatterns = [
     path('medicamentos/',medicamentos, name="Medicamentos"),
     path('login/',login, name="Login"),
     path('eliminar/<id>',eliminar,name='eliminar'),
+    path('modificar/<id>',modificar,name='modificar'),
+
 
 ]

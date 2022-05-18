@@ -75,8 +75,8 @@ class medicamento(models.Model):
     caducado = models.IntegerField(verbose_name="Caduc",null=True)
     motivoCaduc = models.CharField(max_length=100, verbose_name="MotCaduc", null=False)
 
-    def __str__(self):
-        return f'{self.nombreMedi} -> {self.precio}'
+    def __str__(self) -> str:
+        return self.nombreMedi
 
 
 class reservar(models.Model):
