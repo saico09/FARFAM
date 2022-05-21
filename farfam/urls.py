@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from core.views import farmacia,agregar,medicamentos,login,eliminar,modificar
+from core.views import farmacia,agregar,medicamentos,login,eliminar,modificar,send_mail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +26,6 @@ urlpatterns = [
     path('login/',login, name="Login"),
     path('eliminar/<id>',eliminar,name='eliminar'),
     path('modificar/<id>',modificar,name='modificar'),
-
+    path('correo/',send_mail,name='correo')
 
 ]

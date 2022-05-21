@@ -2,6 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render,HttpResponse,redirect
 from core.Carrito import Carrito
 
+from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import get_template
+
 from core.models import medicamento
 
 from core.forms import MedicamentoForm
@@ -86,4 +90,24 @@ def login(request):
     
     return render(request,"login.html")
 
-            
+
+def send_mail(mail):
+    context={'mail':mail}
+    template=get_template('correo.html')
+    content=template.render(context)
+
+    email=EmailMultiAlternatives(
+        'Un correo de prueba',
+        'Farmacia FARFAM',
+        settings.EMAIL_HOST_USER,
+        [mail]
+    )
+    
+    email.attach_alternative(content, 'text/html')
+    email.send()
+
+def farmacia(request):
+    if request.method == "POST":
+        mail =request.POST.get('mail')
+        send_mail(mail)
+    return render(request,'farmacia.html',{})

@@ -8,6 +8,7 @@ class paciente(models.Model):
     Snombre = models.CharField(max_length=20, verbose_name="SNombre ",null=True)
     apellidoP = models.CharField(max_length=20, verbose_name="ApellidoP ",null=True)
     apellidoM = models.CharField(max_length=20, verbose_name="ApellidoM ",null=True)
+    correoPaciente = models.EmailField(max_length=30, verbose_name="CorreoPaciente", null=True)
 
     def __str__(self) -> str:
         return self.Pnombre
