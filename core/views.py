@@ -76,7 +76,7 @@ def modificar(request,id):
     }
 
     if request.method== 'POST':
-        formulario=MedicamentoForm(data=request.POST,instance=medicamento)
+        formulario=MedicamentoForm(data=request.POST,instance=publicaciones)
         if formulario.is_valid:
             formulario.save()
             datos['mensaje']="Datos modificados exitosamente"
